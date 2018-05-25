@@ -35,7 +35,7 @@ export default class Note extends Component {
   }
 
   remove() {
-    console.log("remove");
+    this.props.onRemove(this.props.index);
   }
 
   renderForm() {
