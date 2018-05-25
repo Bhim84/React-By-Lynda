@@ -26,11 +26,12 @@ export default class Note extends Component {
     });
   }
 
-  save() {
+  save(e) {
+    e.preventDefault();
+    this.props.onChange(this._newText.value, this.props.index);
     this.setState({
       editing: false
     });
-    console.log(this._newText.value);
   }
 
   remove() {
@@ -40,7 +41,7 @@ export default class Note extends Component {
   renderForm() {
     return (
       <div className="note">
-        <form>
+        <form onSubmit={this.save}>
           <textarea ref={input => (this._newText = input)} />
           <button onClick={this.save} id="save">
             <FaFloppyO />

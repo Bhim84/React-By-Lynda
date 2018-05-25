@@ -6,29 +6,27 @@ export default class Board extends Component {
     super(props);
     this.state = {
       notes: [
-        { id: 1, note: "Call Bhim" },
-        { id: 2, note: "Call Raj" },
-        { id: 2, note: "Call Raj" }
+        { id: 0, note: "Call Bhim" },
+        { id: 1, note: "Call Raj" },
+        { id: 2, note: "Call Suyesh" }
       ]
     };
     this.eachNote = this.eachNote.bind(this);
     this.updateNote = this.updateNote.bind(this);
   }
 
-  updateNote(newText, index) {
-    console.log(newText);
-    this.setState(
-      (prevState = {
-        notes: prevState.notes.map(
-          note => (note.id !== index ? note : { ...note, note: newText })
-        )
-      })
-    );
+  updateNote(newText, i) {
+    console.log("updating text at index", newText, i);
+    this.setState(prevState => ({
+      notes: prevState.notes.map(
+        note => (note.id !== i ? note : { ...note, note: newText })
+      )
+    }));
   }
 
-  eachNote(note, index) {
+  eachNote(note, i) {
     return (
-      <Note key={index} index={index} update={this.updateNote}>
+      <Note key={i} index={i} onChange={this.updateNote}>
         {note.note}
       </Note>
     );
