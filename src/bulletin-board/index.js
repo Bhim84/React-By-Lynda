@@ -3,4 +3,4 @@ import { render } from "react-dom";
 import "./index.css";
 import Board from "./Board";
 
-render(<Board />, document.getElementById("root"));
+render(<Board count={20} />, document.getElementById("root"));
